@@ -20,140 +20,139 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-var Vector2D = new Class({
-    
-    Implements: [Options, Events],
+var Vector2D = function() {}
+Vector2D.prototype = {
 
     x: 0,
     y: 0,
     
-    initialize: function(x, y){
+    initialize: function(x, y) {
         this.x = x;
         this.y = y;
     },
     
-    set: function(other){
+    set: function(other) {
         this.x = other.x;
         this.y = other.y;
         return this;
     },
     
-    setArray: function(arr){
+    setArray: function(arr) {
         this.x = arr[0];
         this.y = arr[1];
         return this;
     },
 
-    setCoords: function(x, y){
+    setCoords: function(x, y) {
         this.x = x;
         this.y = y;
         return this;
     },
     
-    get: function(){
+    get: function() {
         return new Vector2D(this.x, this.y);
     },
     
-    mag: function(){
+    mag: function() {
         return Math.sqrt(this.x*this.x + this.y*this.y);
     },
 
-    add: function(other){
+    add: function(other) {
         this.x += other.x;
         this.y += other.y;
         return this;
     },
     
-    addArray: function(arr){
+    addArray: function(arr) {
         this.x += arr[0];
         this.y += arr[1];
         return this;
     },
     
-    addCoords: function(x, y){
+    addCoords: function(x, y) {
         this.x += x;
         this.y += y;
         return this;
     },
     
-    sub: function(other){
+    sub: function(other) {
         this.x -= other.x;
         this.y -= other.y;
         return this;
     },
     
-    subArray: function(arr){
+    subArray: function(arr) {
         this.x -= arr[0];
         this.y -= arr[1];
         return this;
     },
     
-    subCoords: function(x, y){
+    subCoords: function(x, y) {
         this.x -= x;
         this.y -= y;
         return this;
     },
     
-    mult: function(n){
+    mult: function(n) {
         this.x *= n;
         this.y *= n;
         return this;
     },
     
-    multVec: function(other){
+    multVec: function(other) {
         this.x *= other.x;
         this.y *= other.y;
         return this;
     },
     
-    div: function(n){
+    div: function(n) {
         this.x /= n;
         this.y /= n;
         return this;
     },
     
-    divVec: function(other){
+    divVec: function(other) {
         this.x /= other.x;
         this.y /= other.y;
         return this;
     },
    
-    dist: function(other){
+    dist: function(other) {
         var dx = this.x - other.x;
         var dy = this.y - other.y;
         return Math.sqrt(dx * dx + dy * dy);
     },    
 
-    dot: function(other){
+    dot: function(other) {
         return this.x * other.x + this.y * other.y;    
     },
     
-    dotCoords: function(x, y){
+    dotCoords: function(x, y) {
         return this.x * x + this.y + y
     },
     
-    normalize: function(){
+    normalize: function() {
         var m = this.mag();
-        if (m != 0 && m != 1){
+        if (m != 0 && m != 1) {
             this.div(m);
         }
         return this;
     },
     
-    limit: function(max){      
-        if (this.mag() > max){
+    limit: function(max) {      
+        if (this.mag() > max) {
             this.normalize();
             this.mult(max);
         }
         return this;
     },
     
-    heading2D: function(){
+    heading2D: function() {
       var angle = Math.atan2(-y, x);
       return -1 * angle;
     },
 
-    rotate: function(rads){
+    rotate: function(rads) {
         var s = Math.sin(rads);
         var c = Math.cos(rads);
         this.x = (c * this.x) - (s * this.y);
@@ -161,27 +160,27 @@ var Vector2D = new Class({
         return this;
     },
     
-    toString: function(){
+    toString: function() {
         return "[" + this.x + "," + this.y + "y" + "]";
     }
     
-})
+};
 
 /* "Class methods" */
 
-var _add = function(one, other){
+var _add = function(one, other) {
     var vec = new Vector2D();
     vec.setCoords(one.x + other.x, one.y + other.y);
     return vec;
 }
 
-var _sub = function(one, other){
+var _sub = function(one, other) {
     var vec = new Vector2D();
     vec.setCoords(one.x - other.x, one.y - other.y);
     return vec;
 }
 
-var _dist = function(one, other){
+var _dist = function(one, other) {
     var dx = one.x - other.x;
     var dy = one.y - other.y;
     return Math.sqrt(dx*dx + dy*dy);
