@@ -35,20 +35,23 @@ var Vector2D = new Class({
     set: function(other){
         this.x = other.x;
         this.y = other.y;
+        return this;
     },
     
     setArray: function(arr){
         this.x = arr[0];
         this.y = arr[1];
+        return this;
     },
 
     setCoords: function(x, y){
         this.x = x;
         this.y = y;
+        return this;
     },
     
     get: function(){
-        return new Vector2D({x:this.x, y:this.y});
+        return new Vector2D(this.x, this.y);
     },
     
     mag: function(){
@@ -58,53 +61,63 @@ var Vector2D = new Class({
     add: function(other){
         this.x += other.x;
         this.y += other.y;
+        return this;
     },
     
     addArray: function(arr){
         this.x += arr[0];
         this.y += arr[1];
+        return this;
     },
     
     addCoords: function(x, y){
         this.x += x;
         this.y += y;
+        return this;
     },
     
     sub: function(other){
         this.x -= other.x;
         this.y -= other.y;
+        return this;
     },
     
     subArray: function(arr){
         this.x -= arr[0];
         this.y -= arr[1];
+        return this;
     },
     
     subCoords: function(x, y){
         this.x -= x;
         this.y -= y;
+        return this;
     },
     
     mult: function(n){
         this.x *= n;
         this.y *= n;
+        return this;
     },
     
     multVec: function(other){
         this.x *= other.x;
         this.y *= other.y;
+        return this;
     },
     
     div: function(n){
         this.x /= n;
         this.y /= n;
+        return this;
     },
     
     divVec: function(other){
         this.x /= other.x;
         this.y /= other.y;
+        return this;
     },
-    
+   
     dist: function(other){
         var dx = this.x - other.x;
         var dy = this.y - other.y;
@@ -124,6 +137,7 @@ var Vector2D = new Class({
         if (m != 0 && m != 1){
             this.div(m);
         }
+        return this;
     },
     
     limit: function(max){      
@@ -131,6 +145,7 @@ var Vector2D = new Class({
             this.normalize();
             this.mult(max);
         }
+        return this;
     },
     
     heading2D: function(){
@@ -143,6 +158,7 @@ var Vector2D = new Class({
         var c = Math.cos(rads);
         this.x = (c * this.x) - (s * this.y);
         this.y = (s * this.x) + (c * this.y);
+        return this;
     },
     
     toString: function(){
