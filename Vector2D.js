@@ -20,12 +20,12 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-var Vector2D = function() {}
+var Vector2D = function(x, y) {
+    this.x = x;
+    this.y = y;
+}
 Vector2D.prototype = {
 
-    x: 0,
-    y: 0,
-    
     initialize: function(x, y) {
         this.x = x;
         this.y = y;
