@@ -178,7 +178,7 @@ Vector2D.prototype = {
     
 };
 
-/* "Class methods" */
+/* Static methods */
 
 Vector2D.add = function(one, other) {
     var vec = new Vector2D();
@@ -204,3 +204,9 @@ Vector2D.random = function(mag) {
     return vec;
 }
 
+Vector2D.mult = function(one, scalar) {
+    var vec = new Vector2D(one.x, one.y);
+    vec.x *= scalar;
+    vec.y *= scalar
+    return vec;
+}
