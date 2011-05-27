@@ -98,6 +98,11 @@ Vector2D.prototype = {
         this.y *= n;
         return this;
     },
+
+    scale: function(n) {
+        this.mult(n);
+        return this;
+    },
     
     multVec: function(other) {
         this.x *= other.x;
@@ -159,6 +164,13 @@ Vector2D.prototype = {
         this.y = (s * this.x) + (c * this.y);
         return this;
     },
+
+    random: function(mag) {
+        this.x = Math.random();
+        this.y = Math.random();
+        if (mag) this.scale(mag);
+        return this;
+    },
     
     toString: function() {
         return "[" + this.x + "," + this.y + "y" + "]";
@@ -168,24 +180,27 @@ Vector2D.prototype = {
 
 /* "Class methods" */
 
-var _add = function(one, other) {
+Vector2D.add = function(one, other) {
     var vec = new Vector2D();
     vec.setCoords(one.x + other.x, one.y + other.y);
     return vec;
 }
 
-var _sub = function(one, other) {
+Vector2D.sub = function(one, other) {
     var vec = new Vector2D();
     vec.setCoords(one.x - other.x, one.y - other.y);
     return vec;
 }
 
-var _dist = function(one, other) {
+Vector2D.dist = function(one, other) {
     var dx = one.x - other.x;
     var dy = one.y - other.y;
     return Math.sqrt(dx*dx + dy*dy);
 }
 
-Vector2D._add = _add;
-Vector2D._sub = _sub;
-Vector2D._dist = _dist;
+Vector2D.random = function(mag) {
+    var vec = new Vector2D(Math.random(), Math.random());
+    if (mag) vec.scale(mag);
+    return vec;
+}
+
