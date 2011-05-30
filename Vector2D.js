@@ -165,6 +165,17 @@ Vector2D.prototype = {
         return this;
     },
 
+    angle: function(other) {
+        Math.acos(this.dot(other) / this.mag() * other.mag());
+    },
+
+    normal: function() {
+        var temp = this.vector.x;
+        this.x = -this.vector.y;
+        this.y = temp;
+        return this;
+    },
+
     random: function(mag) {
         this.x = Math.random();
         this.y = Math.random();
@@ -210,3 +221,24 @@ Vector2D.mult = function(one, scalar) {
     vec.y *= scalar
     return vec;
 }
+
+Vector2D.normal = function(vec) {
+    return new Vector2D(-vec.y, vec.x);
+}
+
+Vector2D.normalize = function(vec) {
+    var v = new Vector2D(vec.x, vec.y);
+    var m = v.mag();
+    if (m != 0 && m != 1) {
+        v.div(m);
+    }
+    // TODO, you should probably throw an error in an else
+    return v;
+}
+
+Vector2D.componentVector = function(vec, directionVec) {
+    directionVec.normalize();
+    directionVec.mult(vec.dot(directionVec));
+    return directionVec;
+}
+
