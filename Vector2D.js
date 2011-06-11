@@ -182,6 +182,11 @@ Vector2D.prototype = {
         if (mag) this.scale(mag);
         return this;
     },
+
+    zero: function() {
+        this.x = 0;
+        this.y = 0;
+    },
     
     toString: function() {
         return "[" + this.x + "," + this.y + "y" + "]";
