@@ -160,8 +160,9 @@ Vector2D.prototype = {
     rotate: function(rads) {
         var s = Math.sin(rads);
         var c = Math.cos(rads);
-        this.x = (c * this.x) - (s * this.y);
+        var xrot = (c * this.x) - (s * this.y);
         this.y = (s * this.x) + (c * this.y);
+        this.x = xrot;
         return this;
     },
 
