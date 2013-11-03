@@ -189,7 +189,7 @@ Vector2D.prototype = {
     },
     
     toString: function() {
-        return "[" + this.x + "," + this.y + "y" + "]";
+        return "[" + this.x + "," + this.y + "]";
     }
     
 };
