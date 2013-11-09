@@ -20,11 +20,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-var Vector2D = function(x, y) {
+var Vector2d = function(x, y) {
     this.x = x;
     this.y = y;
 }
-Vector2D.prototype = {
+Vector2d.prototype = {
 
     initialize: function(x, y) {
         this.x = x;
@@ -50,7 +50,7 @@ Vector2D.prototype = {
     },
     
     get: function() {
-        return new Vector2D(this.x, this.y);
+        return new Vector2d(this.x, this.y);
     },
     
     mag: function() {
@@ -152,7 +152,7 @@ Vector2D.prototype = {
         return this;
     },
     
-    heading2D: function() {
+    heading2d: function() {
       var angle = Math.atan2(-y, x);
       return -1 * angle;
     },
@@ -204,43 +204,43 @@ Vector2D.prototype = {
 
 /* Static methods */
 
-Vector2D.add = function(one, other) {
-    var vec = new Vector2D();
+Vector2d.add = function(one, other) {
+    var vec = new Vector2d();
     vec.setCoords(one.x + other.x, one.y + other.y);
     return vec;
 }
 
-Vector2D.sub = function(one, other) {
-    var vec = new Vector2D();
+Vector2d.sub = function(one, other) {
+    var vec = new Vector2d();
     vec.setCoords(one.x - other.x, one.y - other.y);
     return vec;
 }
 
-Vector2D.dist = function(one, other) {
+Vector2d.dist = function(one, other) {
     var dx = one.x - other.x;
     var dy = one.y - other.y;
     return Math.sqrt(dx*dx + dy*dy);
 }
 
-Vector2D.random = function(mag) {
-    var vec = new Vector2D(Math.random(), Math.random());
+Vector2d.random = function(mag) {
+    var vec = new Vector2d(Math.random(), Math.random());
     if (mag) vec.scale(mag);
     return vec;
 }
 
-Vector2D.mult = function(one, scalar) {
-    var vec = new Vector2D(one.x, one.y);
+Vector2d.mult = function(one, scalar) {
+    var vec = new Vector2d(one.x, one.y);
     vec.x *= scalar;
     vec.y *= scalar
     return vec;
 }
 
-Vector2D.normal = function(vec) {
-    return new Vector2D(-vec.y, vec.x);
+Vector2d.normal = function(vec) {
+    return new Vector2d(-vec.y, vec.x);
 }
 
-Vector2D.normalize = function(vec) {
-    var v = new Vector2D(vec.x, vec.y);
+Vector2d.normalize = function(vec) {
+    var v = new Vector2d(vec.x, vec.y);
     var m = v.mag();
     if (m != 0 && m != 1) {
         v.div(m);
@@ -249,7 +249,7 @@ Vector2D.normalize = function(vec) {
     return v;
 }
 
-Vector2D.componentVector = function(vec, directionVec) {
+Vector2d.componentVector = function(vec, directionVec) {
     directionVec.normalize();
     directionVec.mult(vec.dot(directionVec));
     return directionVec;
