@@ -166,7 +166,10 @@ Vector2D.prototype = {
     },
 
     angle: function(other) {
-        Math.acos(this.dot(other) / this.mag() * other.mag());
+        console.log(this.dot(other));
+        console.log(this.normalize());
+        console.log(other.normalize());
+        return Math.acos(this.dot(other) / (this.mag() * other.mag()));
     },
 
     normal: function() {
@@ -186,6 +189,10 @@ Vector2D.prototype = {
     zero: function() {
         this.x = 0;
         this.y = 0;
+    },
+
+    equals: function(other) {
+        return this.x === other.x && this.y === other.y
     },
     
     toString: function() {
