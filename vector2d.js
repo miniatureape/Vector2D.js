@@ -167,9 +167,6 @@ Vector2d.prototype = {
     },
 
     angle: function(other) {
-        console.log(this.dot(other));
-        console.log(this.normalize());
-        console.log(other.normalize());
         return Math.acos(this.dot(other) / (this.mag() * other.mag()));
     },
 
