@@ -153,8 +153,8 @@ Vector2d.prototype = {
     },
     
     heading2d: function() {
-      var angle = Math.atan2(-y, x);
-      return -1 * angle;
+      var angle = Math.atan2(this.y, this.x);
+      return angle;
     },
 
     rotate: function(rads) {
@@ -178,8 +178,8 @@ Vector2d.prototype = {
     },
 
     random: function(mag) {
-        this.x = Math.random();
-        this.y = Math.random();
+        this.x = (Math.random() - 0.5) * 2;
+        this.y = (Math.random() - 0.5) * 2;
         if (mag) this.scale(mag);
         return this;
     },
